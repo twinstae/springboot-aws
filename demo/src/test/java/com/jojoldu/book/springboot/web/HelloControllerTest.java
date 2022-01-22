@@ -15,23 +15,15 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @WebMvcTest(controllers = HelloController.class)
 public class HelloControllerTest {
 
-        @Autowired
+    @Autowired
+    private MockMvc mvc;
 
-    
     @Test
+    public void hello가_리턴된다() throws Exception {
+        String hello = "<h1>hello</h1><p>나는 귀여운 토끼의 서버야!</p>";
 
-        S
-    
         mvc.perform(get("/hello"))
-
-           .andExpect(content().st
-                
-                
-    @
-
-        m
-           .andExpect(status().isOk())
-           .andExpect(content().
-                
-                
-    
+                .andExpect(status().isOk())
+                .andExpect(content().string(hello));
+    }
+}
